@@ -1,6 +1,9 @@
 language: python
 python: 3.6
 
+before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+
 env:
   global:
     - DISPLAY=:99.0
