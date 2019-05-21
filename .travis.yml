@@ -15,5 +15,6 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm i -g npm@^3
   - sleep 3
+  - pip install selenium==3.141.0
 
 script: python tests/main_test.py
