@@ -11,6 +11,12 @@ language: python
 python: 3.6
 
 before_script:
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+  
+ before_install:
+  - export PATH="$HOME/bin:$PATH"
+
+before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - npm i -g npm@^3
