@@ -13,7 +13,7 @@ python: 3.6
 before_script:
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   
- before_install:
+before_install:
   - export PATH="$HOME/bin:$PATH"
 
 before_script:
