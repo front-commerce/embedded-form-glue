@@ -1,23 +1,19 @@
+sudo: required
+dist: trusty
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
 language: python
 python: 3.6
 
 before_script:
-  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
-
-env:
-  global:
-    - DISPLAY=:99.0
-    - MOZ_HEADLESS=1
-    - WEB_HOST: http://127.0.0.1:7000
-
-addons:
-  chrome: stable
-
-before_script:
-  - "sh -e /etc/init.d/xvfb start"
-  - "python -m http.server 7000 &"
-  - sleep 4
-  - pip install selenium==3.141.0
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm i -g npm@^3
+  - sleep 3
 
 script: python tests/main_test.py
-
