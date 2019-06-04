@@ -10,7 +10,7 @@ class Glue {
         this.publicKey = null;
     }
 
-    loadLibrary(domain, publicKey, formToken=null) {
+    loadLibrary(domain, publicKey, formToken=null, language=null) {
         if (typeof window.KR_CLIENT_LOADED != 'undefined') {
             return Promise.resolve({KR: window.KR});
         }
@@ -52,6 +52,9 @@ class Glue {
             script.src = `${domain}static/js/krypton-client/V4.0/stable/kr-payment-form.min.js`;
             script.setAttribute("kr-public-key", publicKey);
             script.setAttribute("kr-spa-mode", "true");
+            if (language) {
+                script.setAttribute("kr-language", language);
+            }
 
             if (this.formToken) {
                 script.setAttribute("kr-form-token", this.formToken);
